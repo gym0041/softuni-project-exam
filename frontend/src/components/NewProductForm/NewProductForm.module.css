@@ -1,0 +1,60 @@
+.form {
+    width: 600px;
+    border: 1px solid black;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-size: 20px;
+    padding: 2rem;
+
+}
+
+.form>div:nth-child(1) {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.category {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.category select {
+    width: 150px;
+    padding: 6px 12px;
+}
+
+.middle {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.middle>* {
+    flex: 1 0 45%;
+}
+
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+
+}
+
+input {
+    padding: 0.5rem;
+}
+
+.controls {
+    display: flex;
+    justify-content: end;
+    gap: 1rem;
+}
+
+button {
+    font-size: 18px;
+    padding: 8px 12px;
+}

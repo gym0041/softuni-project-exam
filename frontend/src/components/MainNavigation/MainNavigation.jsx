@@ -22,6 +22,11 @@ export default function MainNavigation() {
                 About
               </NavLink>
             </li>
+            <li>
+              <NavLink to={"/catalog/new"} className={({ isActive }) => (isActive ? classes.active : undefined)}>
+                Sell
+              </NavLink>
+            </li>
           </ul>
         </div>
         <div className={classes.right}>

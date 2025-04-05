@@ -1,10 +1,11 @@
+import { useState } from "react";
 import classes from "./AuthForm.module.css";
 import { Link, useSearchParams, Form, useActionData } from "react-router-dom";
 export default function AuthForm() {
   const [searchParams, setSearchParams] = useSearchParams();
   let actionData = useActionData();
-
   let isLogin = searchParams.get("mode") === "login";
+  console.log("render");
   return (
     <>
       <div className="wrapper">
