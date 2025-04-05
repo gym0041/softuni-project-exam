@@ -72,6 +72,8 @@
     align-content: center;
 }
 
+
+
 .dropDownIcon:hover {
 
     /* background-color: green; */
@@ -106,5 +108,11 @@
     width: 100%;
     color: inherit;
     padding: 5px 5px 10px 5px;
+
+}
+
+.navList a.active {
+    transform: scale(1.3);
+    color: black !important;
 
 }

@@ -1,6 +1,6 @@
 .form {
     width: 500px;
-    margin: 0 auto;
+    margin: 2rem auto;
     padding: 1rem 2rem;
     border-radius: 6px;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
@@ -73,9 +73,18 @@
     background-color: rgb(67, 67, 67);
     color: white;
     padding: 10px 26px;
+    font-size: 1rem;
 
 }
 
 .controls .btn:hover {
     background-color: rgb(21, 21, 21);
+}
+
+.error {
+    background-color: rgb(130, 20, 20);
+    color: white;
+    padding: 10px;
+    text-align: center;
+
 }

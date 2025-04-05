@@ -8,3 +8,30 @@ export default function Auth() {
     </>
   );
 }
+
+export async function action({ request, params }) {
+  let formData = await request.formData();
+  let searchParams = new URL(request.url).searchParams;
+  let mode = searchParams.get("mode");
+
+  let body = Object.fromEntries(formData.entries());
+
+  if (body.email.length === 0 || body.password.length === 0 || body.rePassword === 0) {
+    return {
+      error: "All fields are required!",
+    };
+  }
+  if (mode !== "login") {
+    if (!body.accountType) {
+      return { error: "Please choose an Account type!" };
+    }
+    if (body.password !== body.rePassword) {
+      return {
+        error: "Passwords do not match!",
+      };
+    }
+  }
+  console.log(body);
+
+  return;
+}

@@ -3,10 +3,14 @@ import {} from "@fortawesome/fontawesome-free-solid";
 import Header from "./components/Header/Header";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Auth from "./pages/Auth";
+import Auth, { action as registerAndLoginAction } from "./pages/Auth";
+import Catalog from "./pages/Catalog";
+import About from "./pages/About";
 const router = createBrowserRouter([
   { path: "/", element: <Header /> },
-  { path: "/auth", element: <Auth /> },
+  { path: "/auth", action: registerAndLoginAction, element: <Auth /> },
+  { path: "/catalog", element: <Catalog /> },
+  { path: "/about", element: <About /> },
 ]);
 function App() {
   return (

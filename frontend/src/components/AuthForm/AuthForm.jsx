@@ -1,13 +1,19 @@
 import classes from "./AuthForm.module.css";
-import { Link, NavLink, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, Form, useActionData } from "react-router-dom";
 export default function AuthForm() {
   const [searchParams, setSearchParams] = useSearchParams();
+  let actionData = useActionData();
 
   let isLogin = searchParams.get("mode") === "login";
   return (
     <>
       <div className="wrapper">
-        <form className={classes.form} action="">
+        <Form className={classes.form} method="post">
+          {actionData && actionData.error && (
+            <div className={classes.error}>
+              <p>{actionData.error}</p>
+            </div>
+          )}
           <p>{isLogin ? "Login" : "Register"}</p>
           {!isLogin && (
             <div
@@ -55,9 +61,9 @@ export default function AuthForm() {
             <Link to={`${isLogin ? "/auth?mode=register" : "/auth?mode=login"}`} className={classes.textBtn}>
               {isLogin ? "Dont have an account? Go to register" : "Already a user? Go to login.."}
             </Link>{" "}
-            <Link className={classes.btn}>{isLogin ? "Login" : "Register"}</Link>
+            <button className={classes.btn}>{isLogin ? "Login" : "Register"}</button>
           </div>
-        </form>
+        </Form>
       </div>
     </>
   );

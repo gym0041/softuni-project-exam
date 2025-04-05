@@ -1,0 +1,17 @@
+.productList {
+    width: 80%;
+    padding: 2rem;
+    flex-wrap: wrap;
+    min-height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    /* border: 1px solid red; */
+    margin-top: 3rem;
+}
+
+.productList>* {
+    flex: 0 0 300px;
+}
