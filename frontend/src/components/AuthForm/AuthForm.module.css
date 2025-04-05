@@ -1,0 +1,81 @@
+.form {
+    width: 500px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.form>p {
+    font-size: 2rem;
+}
+
+.form a {
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 1px solid black;
+    color: black;
+}
+
+.control-row {
+    /* background-color: red; */
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    font-size: 1.1rem;
+
+}
+
+
+
+.labelEmail {
+    font-size: 1.1rem;
+}
+
+
+
+.control-row:nth-last-child(2) {
+    margin-bottom: 40px;
+}
+
+.control-row>input {
+    padding: 10px;
+    font-size: 1.1rem;
+
+}
+
+
+.controls {
+    margin-bottom: 30px;
+    text-align: right;
+    gap: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.controls .textBtn {
+    border: none;
+    color: #8d8c8c;
+    align-content: end;
+
+}
+
+.controls .textBtn:hover {
+    font-weight: 400;
+    color: #2b2a2a;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+
+}
+
+.controls .btn {
+    background-color: rgb(67, 67, 67);
+    color: white;
+    padding: 10px 26px;
+
+}
+
+.controls .btn:hover {
+    background-color: rgb(21, 21, 21);
+}
