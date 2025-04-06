@@ -3,7 +3,6 @@ import { Link, useSearchParams, Form, useActionData } from "react-router-dom";
 export default function AuthForm() {
   const [searchParams, setSearchParams] = useSearchParams();
   let actionData = useActionData();
-  console.log(actionData);
   let isLogin = searchParams.get("mode") === "login";
   return (
     <>

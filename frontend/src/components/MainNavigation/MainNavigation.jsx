@@ -1,6 +1,10 @@
 import classes from "./MainNavigation.module.css";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Context";
+import { useContext } from "react";
 export default function MainNavigation() {
+  const { authState } = useContext(AuthContext);
+  let isLogged = authState.isLogged;
   return (
     <>
       <div className={classes.mainNavContainer}>
@@ -22,11 +26,13 @@ export default function MainNavigation() {
                 About
               </NavLink>
             </li>
-            <li>
-              <NavLink to={"/catalog/new"} className={({ isActive }) => (isActive ? classes.active : undefined)}>
-                Sell
-              </NavLink>
-            </li>
+            {isLogged && (
+              <li>
+                <NavLink to={"/catalog/new"} className={({ isActive }) => (isActive ? classes.active : undefined)}>
+                  Sell
+                </NavLink>
+              </li>
+            )}
           </ul>
         </div>
         <div className={classes.right}>
@@ -37,12 +43,26 @@ export default function MainNavigation() {
             <div className={classes.dropDownIcon}>
               hover
               <ul className={classes.dropDown}>
-                <li>
-                  <Link to={"/auth?mode=login"}>Login</Link>
-                </li>
-                <li>
-                  <Link to={"/auth?mode=register"}>Register</Link>
-                </li>
+                {!isLogged && (
+                  <>
+                    <li>
+                      <Link to={"/auth?mode=login"}>Login</Link>
+                    </li>
+                    <li>
+                      <Link to={"/auth?mode=register"}>Register</Link>
+                    </li>
+                  </>
+                )}
+                {isLogged && (
+                  <>
+                    <li>
+                      <Link to={"/auth?mode=login"}>Profile</Link>
+                    </li>
+                    <li>
+                      <NavLink to={"/logout"}>Logout</NavLink>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
           </div>

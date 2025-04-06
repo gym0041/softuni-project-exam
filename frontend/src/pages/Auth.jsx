@@ -1,10 +1,8 @@
-import MainNavigation from "../components/MainNavigation/MainNavigation";
 import AuthForm from "../components/AuthForm/AuthForm";
 import { redirect } from "react-router-dom";
 export default function Auth() {
   return (
     <>
-      <MainNavigation />
       <AuthForm></AuthForm>
     </>
   );

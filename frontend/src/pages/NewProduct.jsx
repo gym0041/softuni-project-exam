@@ -1,9 +1,7 @@
 import NewProductForm from "../components/NewProductForm/NewProductForm";
-import MainNavigation from "../components/MainNavigation/MainNavigation";
 export default function NewProduct() {
   return (
     <>
-      <MainNavigation />
       <NewProductForm></NewProductForm>
     </>
   );
@@ -19,7 +17,7 @@ export async function action({ request, params }) {
     description: formData.get("description"),
     image: formData.get("image"),
   };
-  console.log(body);
+  // console.log(body);
   let response = await fetch("http://localhost:8080/events", {
     method: "POST",
     headers: {
