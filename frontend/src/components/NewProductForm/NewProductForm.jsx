@@ -1,8 +1,6 @@
-import { Form, useActionData } from "react-router-dom";
+import { Form } from "react-router-dom";
 import classes from "./NewProductForm.module.css";
 export default function NewProductForm() {
-  let actionData = useActionData();
-  // console.log(actionData);
   return (
     <>
       <div className="wrapper">

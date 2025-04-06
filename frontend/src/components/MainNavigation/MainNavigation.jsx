@@ -17,7 +17,7 @@ export default function MainNavigation() {
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/catalog"} className={({ isActive }) => (isActive ? classes.active : undefined)}>
+              <NavLink to={"/products"} className={({ isActive }) => (isActive ? classes.active : undefined)}>
                 Catalog
               </NavLink>
             </li>
@@ -28,7 +28,7 @@ export default function MainNavigation() {
             </li>
             {isLogged && (
               <li>
-                <NavLink to={"/catalog/new"} className={({ isActive }) => (isActive ? classes.active : undefined)}>
+                <NavLink to={"/products/new"} className={({ isActive }) => (isActive ? classes.active : undefined)}>
                   Sell
                 </NavLink>
               </li>
@@ -37,7 +37,7 @@ export default function MainNavigation() {
         </div>
         <div className={classes.right}>
           <div>
-            <Link> Cart </Link>
+            <Link to={"/cart"}> Cart </Link>
           </div>
           <div>
             <div className={classes.dropDownIcon}>
@@ -46,10 +46,10 @@ export default function MainNavigation() {
                 {!isLogged && (
                   <>
                     <li>
-                      <Link to={"/auth?mode=login"}>Login</Link>
+                      <Link to={"auth?mode=login"}>Login</Link>
                     </li>
                     <li>
-                      <Link to={"/auth?mode=register"}>Register</Link>
+                      <Link to={"auth?mode=register"}>Register</Link>
                     </li>
                   </>
                 )}

@@ -1,16 +1,16 @@
 import classes from "./AuthForm.module.css";
-import { Link, useSearchParams, Form, useActionData } from "react-router-dom";
+import { Link, useSearchParams, Form } from "react-router-dom";
 export default function AuthForm() {
   const [searchParams, setSearchParams] = useSearchParams();
-  let actionData = useActionData();
+
   let isLogin = searchParams.get("mode") === "login";
   return (
     <>
       <div className="wrapper">
         <Form className={classes.form} method="post">
-          {actionData && actionData.error && (
+          {actionData && actionData.errors && (
             <div className={classes.error}>
-              <p>{actionData.error}</p>
+              <p>{errors[0]}</p>
             </div>
           )}
           <p>{isLogin ? "Login" : "Sign up"}</p>
