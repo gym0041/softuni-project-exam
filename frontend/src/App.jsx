@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import Products, { loader as productsLoader } from "./pages/Products";
 import About from "./pages/About";
 import ProductsRoot from "./pages/ProductsRoot";
-import ProductDetails from "./pages/ProductDetails";
+import ProductDetailsPage, { loader as detailsLoader } from "./pages/ProductDetails";
 import NewProduct from "./pages/NewProduct";
 import Cart from "./pages/Cart";
 import Auth from "./pages/Auth";
@@ -18,8 +18,22 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       { index: true, element: <Home /> },
-      { path: "products", loader: productsLoader, element: <Products /> },
-      { path: "products/:prodId", element: <ProductDetails /> },
+      {
+        path: "/products",
+        element: <ProductsRoot />,
+        children: [
+          { path: "", loader: productsLoader, element: <Products /> },
+          {
+            id: "details",
+            loader: detailsLoader,
+            children: [
+              { path: ":prodId", element: <ProductDetailsPage /> },
+              { path: ":prodId/edit", element: <h1>Product Edit Page</h1> },
+            ],
+          },
+        ],
+      },
+
       { path: "about", element: <About /> },
     ],
   },
