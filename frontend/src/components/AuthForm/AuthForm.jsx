@@ -1,11 +1,10 @@
-import { useState } from "react";
 import classes from "./AuthForm.module.css";
 import { Link, useSearchParams, Form, useActionData } from "react-router-dom";
 export default function AuthForm() {
   const [searchParams, setSearchParams] = useSearchParams();
   let actionData = useActionData();
+  console.log(actionData);
   let isLogin = searchParams.get("mode") === "login";
-  console.log("render");
   return (
     <>
       <div className="wrapper">
@@ -15,7 +14,7 @@ export default function AuthForm() {
               <p>{actionData.error}</p>
             </div>
           )}
-          <p>{isLogin ? "Login" : "Register"}</p>
+          <p>{isLogin ? "Login" : "Sign up"}</p>
           {!isLogin && (
             <div
               style={{
@@ -59,10 +58,10 @@ export default function AuthForm() {
             </div>
           )}
           <div className={classes.controls}>
-            <Link to={`${isLogin ? "/auth?mode=register" : "/auth?mode=login"}`} className={classes.textBtn}>
-              {isLogin ? "Dont have an account? Go to register" : "Already a user? Go to login.."}
+            <Link to={`${isLogin ? "/auth?mode=signup" : "/auth?mode=login"}`} className={classes.textBtn}>
+              {isLogin ? "Dont have an account? Go to Sign up" : "Already a user? Go to login.."}
             </Link>{" "}
-            <button className={classes.btn}>{isLogin ? "Login" : "Register"}</button>
+            <button className={classes.btn}>{isLogin ? "Login" : "Sign up"}</button>
           </div>
         </Form>
       </div>

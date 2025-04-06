@@ -1,19 +1,23 @@
+import { Form, useActionData } from "react-router-dom";
 import classes from "./NewProductForm.module.css";
 export default function NewProductForm() {
+  let actionData = useActionData();
+  console.log(actionData);
   return (
     <>
       <div className="wrapper">
         <div className="outer"></div>
         <div className="formWrapper">
-          <form className={classes.form} action="">
+          <Form method="post" className={classes.form} action="">
             <div className={classes.upper}>
               <p>Create new Product</p>
             </div>
             <div className={classes.category}>
               <p>Choose category:</p>
               <select name="category" id="category">
+                <option value="">--Category--</option>
                 <option value="men">Men</option>
-                <option value="men">Women</option>
+                <option value="women">Women</option>
               </select>
             </div>
             <div className={classes.middle}>
@@ -30,17 +34,17 @@ export default function NewProductForm() {
                 <textarea rows="5" name="description" id="description"></textarea>
               </div>
               <div className={classes["form-control"]}>
-                <label htmlFor="imageUrl">Image URL</label>
-                <input type="text" name="imageUrl" id="imageUrl" />
+                <label htmlFor="image">Image URL</label>
+                <input type="text" name="image" id="image" />
               </div>
             </div>
             <div className={classes.bottom}>
               <div className={classes.controls}>
-                <button>Cancel</button>
+                <button type="button">Cancel</button>
                 <button>Create Product</button>
               </div>
             </div>
-          </form>
+          </Form>
         </div>
       </div>
     </>

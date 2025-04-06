@@ -34,8 +34,18 @@ router.use(checkAuth);
 router.post('/', async (req, res, next) => {
   console.log(req.token);
   const data = req.body;
-
+  let check = ["men", "women"]
   let errors = {};
+
+  let i = check.indexOf(data.category);
+
+  console.log(data, i)
+
+
+  if (!data.category || i === -1) {
+    console.log("enter in error")
+    errors.category = "Please select category"
+  }
 
   if (!isValidText(data.title)) {
     errors.title = 'Invalid title.';
@@ -45,9 +55,9 @@ router.post('/', async (req, res, next) => {
     errors.description = 'Invalid description.';
   }
 
-  if (!isValidDate(data.date)) {
-    errors.date = 'Invalid date.';
-  }
+  // if (!isValidDate(data.date)) {
+  //   errors.date = 'Invalid date.';
+  // }
 
   if (!isValidImageUrl(data.image)) {
     errors.image = 'Invalid image.';

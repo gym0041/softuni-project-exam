@@ -1,5 +1,6 @@
 import MainNavigation from "../components/MainNavigation/MainNavigation";
 import AuthForm from "../components/AuthForm/AuthForm";
+import { redirect } from "react-router-dom";
 export default function Auth() {
   return (
     <>
@@ -31,7 +32,22 @@ export async function action({ request, params }) {
       };
     }
   }
-  console.log(body);
 
-  return;
+  let response = await fetch("http://localhost:8080/" + searchParams.get("mode"), {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+
+  if (!response.ok) {
+    return response;
+  }
+
+  let respData = await response.json();
+  localStorage.setItem("token", respData.token);
+  console.log("Succesfully auth");
+
+  return redirect("/");
 }
