@@ -17,7 +17,7 @@ export default function ProductDetails({ product }) {
             <div>
               <button
                 onClick={() => {
-                  return navigate("..");
+                  return navigate("..", { relative: "path" });
                 }}
               >
                 cancel

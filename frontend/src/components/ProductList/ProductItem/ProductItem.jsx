@@ -6,7 +6,7 @@ export default function ProductItem({ product }) {
     <>
       <div className={classes.productContainer}>
         <div className={classes.image}>
-          <img src={product.image} alt="product image" />
+          <img src={product.image || "dsdsd"} alt="product image" />
           <div className={classes["detail-pop"]}>
             <Link to={"/products/" + product.id}>view details</Link>
             <div>like</div>

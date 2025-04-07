@@ -1,10 +1,18 @@
 import classes from "./MainNavigation.module.css";
-import { Link, NavLink } from "react-router-dom";
-import { AuthContext } from "../../Context";
-import { useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { removeUser } from "../../store/appStore";
 export default function MainNavigation() {
-  const { authState } = useContext(AuthContext);
-  let isLogged = authState.isLogged;
+  let user = useSelector((state) => state.auth.user);
+  let dispatch = useDispatch();
+  console.log(user);
+  let navigate = useNavigate();
+
+  function handleLogout() {
+    localStorage.removeItem("token");
+    dispatch(removeUser());
+    navigate("/");
+  }
   return (
     <>
       <div className={classes.mainNavContainer}>
@@ -26,7 +34,8 @@ export default function MainNavigation() {
                 About
               </NavLink>
             </li>
-            {isLogged && (
+
+            {user && (
               <li>
                 <NavLink to={"/products/new"} className={({ isActive }) => (isActive ? classes.active : undefined)}>
                   Sell
@@ -43,7 +52,7 @@ export default function MainNavigation() {
             <div className={classes.dropDownIcon}>
               hover
               <ul className={classes.dropDown}>
-                {!isLogged && (
+                {!user && (
                   <>
                     <li>
                       <Link to={"auth?mode=login"}>Login</Link>
@@ -53,13 +62,16 @@ export default function MainNavigation() {
                     </li>
                   </>
                 )}
-                {isLogged && (
+
+                {user && (
                   <>
                     <li>
                       <Link to={"/auth?mode=login"}>Profile</Link>
                     </li>
                     <li>
-                      <NavLink to={"/logout"}>Logout</NavLink>
+                      <NavLink onClick={handleLogout} to={"#"}>
+                        Logout
+                      </NavLink>
                     </li>
                   </>
                 )}
